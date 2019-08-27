@@ -11,25 +11,22 @@
     dCH4            = Variable(index=[time]) #Change in CH4 concentrations
     CH4             = Variable(index=[time]) #Atmospheric concetration of CH4
 
-end
-
-function run_timestep(s::ch4cyclehector, t::Int)
-    v = s.Variables
-    p = s.Parameters
-
-    if t==1
-        v.emisTocon[t] = 0.
-        v.dCH4[t] = 0.
-        v.CH4[t] = p.M0
-
-    else
-        #Calculate total emissions (anthropogenic and natural) as concentrations
-        v.emisTocon[t] = (p.CH4_emissions[t] + p.CH4N) / p.UC_CH4
-
-        #Calculate change in CH4 concentrations after accounting for strat, soil, and OH sinks.
-        v.dCH4[t] = v.emisTocon[t] - (v.CH4[t-1]/p.Tsoil) - (v.CH4[t-1]/p.Tstrat) - (v.CH4[t-1]/p.TOH[t])
-
-        #Calculate atmospheric concentration of CH4
-        v.CH4[t] = v.CH4[t-1] + v.dCH4[t]
+    function run_timestep(p, v, d, t)
+        if is_first(t)
+            v.emisTocon[t] = 0.
+            v.dCH4[t] = 0.
+            v.CH4[t] = p.M0
+    
+        else
+            #Calculate total emissions (anthropogenic and natural) as concentrations
+            v.emisTocon[t] = (p.CH4_emissions[t] + p.CH4N) / p.UC_CH4
+    
+            #Calculate change in CH4 concentrations after accounting for strat, soil, and OH sinks.
+            v.dCH4[t] = v.emisTocon[t] - (v.CH4[t-1]/p.Tsoil) - (v.CH4[t-1]/p.Tstrat) - (v.CH4[t-1]/p.TOH[t])
+    
+            #Calculate atmospheric concentration of CH4
+            v.CH4[t] = v.CH4[t-1] + v.dCH4[t]
+        end
     end
+    
 end
