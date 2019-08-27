@@ -1,5 +1,7 @@
 module MimiHECTOR
 
+using Mimi
+
 include("components/ch4cycle_hector.jl")
 include("components/o3cycle_hector.jl")
 include("components/ohcycle_hector.jl")
