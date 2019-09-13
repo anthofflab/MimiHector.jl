@@ -7,8 +7,6 @@
     H₂O_share       = Parameter() # Share of direct CH₄ forcing used to estimate stratospheric water vapor forcing due to CH₄ oxidation. (0.12 for etminan forcing equations)
 
     function run_timestep(p, v, d, t)
-        v = s.Variables
-        p = s.Parameters
     
         #Stratospheric H2O from CH4 oxidation
         #From Tanaka et al, 2007, but using Joos et al., 2001 value of 0.05

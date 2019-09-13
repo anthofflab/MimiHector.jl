@@ -8,7 +8,7 @@
     NOx_emissions   = Parameter(index=[time])   #Global NOx emissions in Mt/yr
     CO_emissions    = Parameter(index=[time])   #Global CO emissions in Mt/yr
     NMVOC_emissions = Parameter(index=[time])   #Global non-methane VOC emissions in Mt/yr
-    PO3             = Parameter()               #Pre-industiral Ozone
+    O₃_0             = Parameter()               #Pre-industiral Ozone
     O₃              = Variable(index=[time])    #Concentration tropospheric ozone
     rf_O₃       = Variable(index=[time]) # radiative forcing for tropospheric ozone
 
@@ -18,13 +18,13 @@
     	if is_first(t)
     		# Set Ozone concentration to pre-indsutrial value.
     		v.O₃[t] = p.O₃_0
-    		# Set O₃ radiative forcing relative to pre-industrial.
-    		v.rf_O₃ = 0.0
+    		# Set initial O₃ radiative forcing to 0.0.
+    		v.rf_O₃[t] = 0.0
     	else
     		# Calcualte tropospheric O₃ concentration.
     		v.O₃[t] = (5.0 * log(p.CH₄[t])) + (0.125 * p.NOx_emissions[t]) + (0.0011 * p.CO_emissions[t]) + (0.0033 * p.NMVOC_emissions[t])
-    		#Calculate O₃ radiative forcing, scaled to be relative to pre-indsutrial (i.e. period 1)
-	        v.rf_O₃[t] = (0.042 * p.O₃[t]) - (0.042 * p.O₃[1])
+    		# Calculate O₃ radiative forcing (re-scale forcing this way to make it relative to pre-industrial).
+	        v.rf_O₃[t] = (0.042 * v.O₃[t]) - (0.042 * v.O₃[1])
         end
     end
 end
