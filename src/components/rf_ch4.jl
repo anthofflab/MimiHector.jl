@@ -5,7 +5,7 @@ function interact(M, N)
     return 0.47 * log(d)
 end
 
-@defcomp rfch4hector begin
+@defcomp rf_ch4 begin
     N₂O_0              = Parameter() #preindustrial nitrous oxide, ppbv
     CH4_0              = Parameter() #CH4 pre-industrial concentrations, ppbv
     CH4             = Parameter(index=[time]) #Ch4 concentration ppbv in time t

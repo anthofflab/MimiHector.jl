@@ -1,5 +1,5 @@
 
-@defcomp ch4cyclehector begin
+@defcomp ch4_cycle begin
     UC_CH4          = Parameter() #Tg(CH4)/ppb unit conversion between emissions and concentrations Note:(1 Teragram = 1 Megatonne)
     CH4N            = Parameter() #Natural CH4 emissions (Tgrams)
     Tsoil           = Parameter() #Ch4 loss to soil (years)

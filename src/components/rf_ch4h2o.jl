@@ -1,5 +1,5 @@
 
-@defcomp rfch4h2ohector begin
+@defcomp rf_ch4h2o begin
     M0              = Parameter() #CH4 pre-industrial concentrations, ppbv
     CH4             = Parameter(index=[time]) #Ch4 concentration ppbv in time t
     rf_ch4h2o       = Variable(index=[time]) #Absolute radiative forcing for stratoshperic H2O from CH4 oxidation

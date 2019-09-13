@@ -1,5 +1,5 @@
 
-@defcomp ohcyclehector begin
+@defcomp oh_cycle begin
     CNOX                = Parameter() #coefficient for NOX
     CCO                 = Parameter() #coefficient for CO
     CNMVOC              = Parameter() #coefficient for NMVOC

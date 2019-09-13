@@ -2,7 +2,7 @@
 # Ozone concentration and radiative forcing.
 # --------------------------------------------------
 
-@defcomp o3hector begin
+@defcomp rf_o3 begin
 
     CH₄             = Parameter(index=[time])   # Atmosperhic methane concentration (ppb).
     NOx_emissions   = Parameter(index=[time])   #Global NOx emissions in Mt/yr
