@@ -7,7 +7,7 @@
     H₂O_share       = Parameter()             # Share of direct methane radiative forcing that represents stratospheric water vapor forcing from methane oxidation.
     CH4             = Parameter(index=[time]) # Atmospheric methane concetration for current period (ppb).
 
-    rf_ch4h2o       = Variable(index=[time])  # Rradiative forcing for stratoshperic water vapor from methane oxidation (Wm⁻²)
+    rf_ch4h2o       = Variable(index=[time])  # Radiative forcing for stratoshperic water vapor from methane oxidation (Wm⁻²)
 
     function run_timestep(p, v, d, t)
 

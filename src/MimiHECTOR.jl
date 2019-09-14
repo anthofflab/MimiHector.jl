@@ -20,7 +20,7 @@ function get_hectorch4(;rcp_scenario::String="RCP85", start_year::Int64=1765, en
     # ---------------------------------------------
 
     # Load RCP emissions and concentration scenario values (RCP options = "RCP26", "RCP45", "RCP60", and "RCP85").
-    rcp_emissions 	   = DataFrame(load(joinpath(@__DIR__, "..", "data", "model_data", rcp_scenario*"_EMISSIONS.csv"), skiplines_begin=36))
+    rcp_emissions      = DataFrame(load(joinpath(@__DIR__, "..", "data", "model_data", rcp_scenario*"_EMISSIONS.csv"), skiplines_begin=36))
     rcp_concentrations = DataFrame(load(joinpath(@__DIR__, "..", "data", "model_data", rcp_scenario*"_CONCENTRATIONS.csv"), skiplines_begin=37))
 
     # Set initial CH₄ and N₂O concentrations to RCP 1765 values.
@@ -41,7 +41,7 @@ function get_hectorch4(;rcp_scenario::String="RCP85", start_year::Int64=1765, en
     # Set time index.
     set_dimension!(m, :time, start_year:end_year)
 
- 	# ---------------------------------------------
+    # ---------------------------------------------
     # Add components to model.
     # ---------------------------------------------
     add_comp!(m, oh_cycle)
@@ -88,7 +88,7 @@ function get_hectorch4(;rcp_scenario::String="RCP85", start_year::Int64=1765, en
     set_param!(m, :rf_o3, :CO_emissions, rcp_emissions.CO)
     set_param!(m, :rf_o3, :NMVOC_emissions, rcp_emissions.NMVOC)
 
-	# ---------------------------------------------
+    # ---------------------------------------------
     # Create connections between Mimi components.
     # ---------------------------------------------
     connect_param!(m, :oh_cycle, :CH4, :ch4_cycle, :CH4)
@@ -97,7 +97,7 @@ function get_hectorch4(;rcp_scenario::String="RCP85", start_year::Int64=1765, en
     connect_param!(m, :rf_ch4h2o, :CH4, :ch4_cycle, :CH4)
     connect_param!(m, :rf_ch4, :CH4, :ch4_cycle, :CH4)
 
-	return m
+    return m
 end
 
 end #module
