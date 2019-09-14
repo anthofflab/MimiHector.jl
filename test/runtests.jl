@@ -15,7 +15,7 @@ include("../src/MimiHECTOR.jl")
     m = MimiHECTOR.get_hectorch4()
     run(m)
 
-    end # FAIR model run test.
+    end # Hector-CH4 model run test.
 
 #------------------------------------------------------------------------------
 #   2. Carry out tests to make sure Mimi-HectorCH4 matches the C++ version.
