@@ -1,29 +1,30 @@
-# --------------------------------------------------
-# Ozone concentration and radiative forcing.
-# --------------------------------------------------
+# --------------------------------------------------------
+# Tropospheric ozone concentration and radiative forcing.
+# --------------------------------------------------------
 
 @defcomp rf_o3 begin
 
-    CH₄             = Parameter(index=[time])   # Atmosperhic methane concentration (ppb).
-    NOx_emissions   = Parameter(index=[time])   #Global NOx emissions in Mt/yr
-    CO_emissions    = Parameter(index=[time])   #Global CO emissions in Mt/yr
-    NMVOC_emissions = Parameter(index=[time])   #Global non-methane VOC emissions in Mt/yr
-    O₃_0             = Parameter()               #Pre-industiral Ozone
-    O₃              = Variable(index=[time])    #Concentration tropospheric ozone
-    rf_O₃       = Variable(index=[time]) # radiative forcing for tropospheric ozone
+    O₃_0            = Parameter()             # Pre-industiral atmospheric tropospheric ozone concentration (DU O₃).
+    CH₄             = Parameter(index=[time]) # Atmospheric methane concetration for current period (ppb).
+    NOx_emissions   = Parameter(index=[time]) # Nitrogen oxides emissions (Mt yr⁻¹).
+    CO_emissions    = Parameter(index=[time]) # Carbon monoxide emissions (Mt yr⁻¹).
+    NMVOC_emissions = Parameter(index=[time]) # Non-methane volatile organic compound emissions (Mt yr⁻¹).
+
+    O₃              = Variable(index=[time])  # Atmospheric concentration of tropospheric ozone (DU O₃).
+    rf_O₃           = Variable(index=[time])  # Radiative forcing from tropospheric ozone (Wm⁻²).
 
 
     function run_timestep(p, v, d, t)
 
     	if is_first(t)
-    		# Set Ozone concentration to pre-indsutrial value.
+    		# Set ozone concentration to pre-indsutrial value.
     		v.O₃[t] = p.O₃_0
-    		# Set initial O₃ radiative forcing to 0.0.
+    		# Set initial ozone radiative forcing to 0.0.
     		v.rf_O₃[t] = 0.0
     	else
-    		# Calcualte tropospheric O₃ concentration.
+    		# Calcualte atmospheric tropospheric ozone concentration.
     		v.O₃[t] = (5.0 * log(p.CH₄[t])) + (0.125 * p.NOx_emissions[t]) + (0.0011 * p.CO_emissions[t]) + (0.0033 * p.NMVOC_emissions[t])
-    		# Calculate O₃ radiative forcing (re-scale forcing this way to make it relative to pre-industrial).
+    		# Calculate tropospheric ozone radiative forcing (re-scale forcing this way to make it relative to pre-industrial).
 	        v.rf_O₃[t] = (0.042 * v.O₃[t]) - (0.042 * v.O₃[1])
         end
     end
