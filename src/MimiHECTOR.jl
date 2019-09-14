@@ -31,7 +31,7 @@ function get_hectorch4(;rcp_scenario::String="RCP85", start_year::Int64=1765, en
     start_index, end_index = findall((in)([start_year, end_year]), rcp_emissions.YEARS)
     rcp_emissions = rcp_emissions[start_index:end_index, :]
 
-	# ---------------------------------------------
+    # ---------------------------------------------
     # Initialize Mimi model.
     # ---------------------------------------------
 
