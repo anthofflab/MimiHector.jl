@@ -1,6 +1,6 @@
-# -------------------------------------------------------
-# Radiative forcing from methane (Etminan 2016 equations)
-# -------------------------------------------------------
+# --------------------------------------------------
+# Radiative Forcing from Methane.
+# --------------------------------------------------
 
 # Create a function 'interact' to account for the overlap in methane and nitrous oxide in their radiative absoprtion bands.
 function interact(M, N)

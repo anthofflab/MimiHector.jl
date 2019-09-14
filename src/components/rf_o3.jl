@@ -1,5 +1,5 @@
 # --------------------------------------------------------
-# Tropospheric ozone concentration and radiative forcing.
+# Tropospheric Ozone Concentration and Radiative Forcing.
 # --------------------------------------------------------
 
 @defcomp rf_o3 begin

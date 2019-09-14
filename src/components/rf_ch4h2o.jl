@@ -1,5 +1,5 @@
 # ------------------------------------------------------------------
-# Straospheric Water Vapor From Methane Oxidation Radiative Forcing
+# Straospheric Water Vapor from Methane Oxidation Radiative Forcing.
 # ------------------------------------------------------------------
 
 @defcomp rf_ch4h2o begin
