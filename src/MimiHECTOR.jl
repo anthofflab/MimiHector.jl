@@ -75,7 +75,7 @@ function get_hectorch4(;rcp_scenario::String="RCP85", start_year::Int64=1765, en
 
     # ---- Methane Radiative Forcing ---- #
     set_param!(m, :rf_ch4, :N₂O_0, N₂O_0)
-    set_param!(m, :rf_ch4, :CH4_0, CH₄_0)
+    set_param!(m, :rf_ch4, :CH₄_0, CH₄_0)
     set_param!(m, :rf_ch4, :scale_CH₄, 1.0)
 
     # ---- Straospheric Water Vapor From Methane Radiative Forcing ---- #
