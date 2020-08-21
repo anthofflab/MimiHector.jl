@@ -25,7 +25,7 @@
     		# Calcualte atmospheric tropospheric ozone concentration.
     		v.O₃[t] = (5.0 * log(p.CH₄[t])) + (0.125 * p.NOx_emissions[t]) + (0.0011 * p.CO_emissions[t]) + (0.0033 * p.NMVOC_emissions[t])
     		# Calculate tropospheric ozone radiative forcing (re-scale forcing this way to make it relative to pre-industrial).
-	        v.rf_O₃[t] = (0.042 * v.O₃[t]) - (0.042 * v.O₃[1])
+	        v.rf_O₃[t] = (0.042 * v.O₃[t]) - (0.042 * v.O₃[TimestepIndex(1)])
         end
     end
 end
