@@ -2,8 +2,8 @@ using Test
 using CSVFiles
 using DataFrames
 using Mimi
+using MimiHector
 
-include("../src/MimiHector.jl")
 @testset "Hector" begin
 
 #------------------------------------------------------------------------------
