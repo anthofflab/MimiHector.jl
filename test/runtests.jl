@@ -2,8 +2,8 @@ using Test
 using CSVFiles
 using DataFrames
 using Mimi
+using MimiHector
 
-include("../src/MimiHECTOR.jl")
 @testset "Hector" begin
 
 #------------------------------------------------------------------------------
@@ -12,7 +12,7 @@ include("../src/MimiHECTOR.jl")
 
     @testset "Hector-model" begin
 
-    m = MimiHECTOR.get_hectorch4()
+    m = MimiHector.get_hectorch4()
     run(m)
 
     end # Hector-CH4 model run test.
@@ -41,7 +41,7 @@ include("../src/MimiHECTOR.jl")
     Precision_τ = 0.006
 
     # Get an instance of Mimi-HectorCH4
-    m = MimiHECTOR.get_hectorch4(rcp_scenario = "RCP85", start_year = 1765, end_year = 2300)
+    m = MimiHector.get_hectorch4(rcp_scenario = "RCP85", start_year = 1765, end_year = 2300)
 
     # The Hector validation data starts in 1746 (rather than 1765 like RCPs), so need to change some parameters for Mimi-HectorCH4 to match up.
     # These parameters represent the 1765 results from the Hector output data (they differ from default Hector parameter settings).

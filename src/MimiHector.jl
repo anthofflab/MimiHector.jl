@@ -1,4 +1,4 @@
-module MimiHECTOR
+module MimiHector
 
 using Mimi
 using DataFrames
