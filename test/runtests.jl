@@ -45,9 +45,8 @@ using MimiHector
 
     # The Hector validation data starts in 1746 (rather than 1765 like RCPs), so need to change some parameters for Mimi-HectorCH4 to match up.
     # These parameters represent the 1765 results from the Hector output data (they differ from default Hector parameter settings).
-    set_param!(m, :oh_cycle,  :TOH0, 6.586)
-    set_param!(m, :oh_cycle,  :M0, 648.7)
-    set_param!(m, :ch4_cycle, :M0, 648.7)
+    update_param!(m, :TOH0, 6.586) # TODO Isn't this the value that is already set in the model construction, i.e. this line seems unnecessary?
+    update_param!(m, :M0, 648.7)
 
     run(m)
 

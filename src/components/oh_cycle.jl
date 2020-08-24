@@ -27,13 +27,13 @@
             a = p.CCH4 * (-1.0 * log(p.CH4[t-1]) + log(p.M0))
 
             # NOx contribution to OH lifetime.
-            b = p.CNOX * (-1.0 * p.NOX_emissions[t] + p.NOX_emissions[1])
+            b = p.CNOX * (-1.0 * p.NOX_emissions[t] + p.NOX_emissions[TimestepIndex(1)])
 
             # CO contribution to OH lifetime.
-            c = p.CCO * (-1.0 * p.CO_emissions[t] + p.CO_emissions[1])
+            c = p.CCO * (-1.0 * p.CO_emissions[t] + p.CO_emissions[TimestepIndex(1)])
 
             # NMVOC contribution to OH lifetime.
-            d = p.CNMVOC * (-1.0 * p.NMVOC_emissions[t] + p.NMVOC_emissions[1])
+            d = p.CNMVOC * (-1.0 * p.NMVOC_emissions[t] + p.NMVOC_emissions[TimestepIndex(1)])
 
             # Change in tropospheric OH abundance.
             toh = a + b + c + d

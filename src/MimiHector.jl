@@ -60,17 +60,13 @@ function get_hectorch4(;rcp_scenario::String="RCP85", start_year::Int64=1765, en
     set_param!(m, :oh_cycle, :CNMVOC, -0.000315)
     set_param!(m, :oh_cycle, :CCH4, -0.32)
     set_param!(m, :oh_cycle, :NOX_emissions, rcp_emissions.NOx)
-    set_param!(m, :oh_cycle, :CO_emissions, rcp_emissions.CO)
-    set_param!(m, :oh_cycle, :NMVOC_emissions, rcp_emissions.NMVOC)
     set_param!(m, :oh_cycle, :TOH0, 6.586)
-    set_param!(m, :oh_cycle, :M0, CH₄_0)
 
     # ---- Methane Cycle ---- #
     set_param!(m, :ch4_cycle, :UC_CH4, 2.78)
     set_param!(m, :ch4_cycle, :CH4N, 300.)
     set_param!(m, :ch4_cycle, :Tsoil, 160.)
     set_param!(m, :ch4_cycle, :Tstrat, 120.)
-    set_param!(m, :ch4_cycle, :M0, CH₄_0)
     set_param!(m, :ch4_cycle, :CH4_emissions, rcp_emissions.CH4)
 
     # ---- Methane Radiative Forcing ---- #
@@ -79,14 +75,16 @@ function get_hectorch4(;rcp_scenario::String="RCP85", start_year::Int64=1765, en
     set_param!(m, :rf_ch4, :scale_CH₄, 1.0)
 
     # ---- Straospheric Water Vapor From Methane Radiative Forcing ---- #
-    set_param!(m, :rf_ch4h2o, :M0, CH₄_0)
     set_param!(m, :rf_ch4h2o, :H₂O_share, 0.05)
 
     # ---- Tropospheric Ozone Radiative Forcing ---- #
     set_param!(m, :rf_o3, :O₃_0, 32.38)
     set_param!(m, :rf_o3, :NOx_emissions, rcp_emissions.NOx)
-    set_param!(m, :rf_o3, :CO_emissions, rcp_emissions.CO)
-    set_param!(m, :rf_o3, :NMVOC_emissions, rcp_emissions.NMVOC)
+
+    # ---- Common parameters ---- #
+    set_param!(m, :M0, CH₄_0)
+    set_param!(m, :CO_emissions, rcp_emissions.CO)
+    set_param!(m, :NMVOC_emissions, rcp_emissions.NMVOC)
 
     # ---------------------------------------------
     # Create connections between Mimi components.
