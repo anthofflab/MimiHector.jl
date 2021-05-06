@@ -6,9 +6,9 @@ using MimiHector
 
 @testset "Hector" begin
 
-#------------------------------------------------------------------------------
+# ------------------------------------------------------------------------------
 #   1. Carry out test to check that the model runs.
-#------------------------------------------------------------------------------
+# ------------------------------------------------------------------------------
 
     @testset "Hector-model" begin
 
@@ -17,9 +17,9 @@ using MimiHector
 
     end # Hector-CH4 model run test.
 
-#------------------------------------------------------------------------------
+# ------------------------------------------------------------------------------
 #   2. Carry out tests to make sure Mimi-HectorCH4 matches the C++ version.
-#------------------------------------------------------------------------------
+# ------------------------------------------------------------------------------
 
     @testset "Hector-C++" begin
 
@@ -41,7 +41,7 @@ using MimiHector
     Precision_τ = 0.006
 
     # Get an instance of Mimi-HectorCH4
-    m = MimiHector.get_model(rcp_scenario = "RCP85", start_year = 1765, end_year = 2300)
+    m = MimiHector.get_model(rcp_scenario="RCP85", start_year=1765, end_year=2300)
 
     # The Hector validation data starts in 1746 (rather than 1765 like RCPs), so need to change some parameters for Mimi-HectorCH4 to match up.
     # These parameters represent the 1765 results from the Hector output data (they differ from default Hector parameter settings).

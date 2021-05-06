@@ -20,20 +20,20 @@
     function run_timestep(p, v, d, t)
 
         # Set initial conditions.
-        if is_first(t)
-            v.emisTocon[t] = 0.
-            v.dCH4[t] = 0.
-            v.CH4[t] = p.M0
-        else
+    if is_first(t)
+        v.emisTocon[t] = 0.
+        v.dCH4[t] = 0.
+        v.CH4[t] = p.M0
+    else
             # Convert total emissions (anthropogenic and natural) to concentrations.
-            v.emisTocon[t] = (p.CH4_emissions[t] + p.CH4N) / p.UC_CH4
+        v.emisTocon[t] = (p.CH4_emissions[t] + p.CH4N) / p.UC_CH4
 
             # Calculate change in CH₄ concentrations after accounting for stratospheric, soil, and tropospheric (OH) sinks.
-            v.dCH4[t] = v.emisTocon[t] - (v.CH4[t-1]/p.Tsoil) - (v.CH4[t-1]/p.Tstrat) - (v.CH4[t-1]/p.TOH[t])
+        v.dCH4[t] = v.emisTocon[t] - (v.CH4[t - 1] / p.Tsoil) - (v.CH4[t - 1] / p.Tstrat) - (v.CH4[t - 1] / p.TOH[t])
 
             # Calculate atmospheric concentration of CH₄.
-            v.CH4[t] = v.CH4[t-1] + v.dCH4[t]
-        end
+        v.CH4[t] = v.CH4[t - 1] + v.dCH4[t]
     end
+end
 
 end
