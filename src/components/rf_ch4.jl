@@ -19,6 +19,6 @@ end
     function run_timestep(p, v, d, t)
 
         # Direct methane radiative forcing.
-        v.rf_CH4[t] = (0.036 * (sqrt(p.CH4[t]) - sqrt(p.CH₄_0)) - (interact(p.CH4[t], p.N₂O_0) - interact(p.CH₄_0, p.N₂O_0))) * p.scale_CH₄
-    end
+    v.rf_CH4[t] = (0.036 * (sqrt(p.CH4[t]) - sqrt(p.CH₄_0)) - (interact(p.CH4[t], p.N₂O_0) - interact(p.CH₄_0, p.N₂O_0))) * p.scale_CH₄
+end
 end

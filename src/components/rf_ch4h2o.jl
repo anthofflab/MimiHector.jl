@@ -13,6 +13,6 @@
 
         # Stratospheric water vapor radiative forcing from methane oxidation.
         # "From Tanaka et al, 2007, but using Joos et al., 2001 value of 0.05."
-        v.rf_ch4h2o[t] = p.H₂O_share * (0.036 * (sqrt(p.CH4[t]) - sqrt(p.M0)))
-    end
+    v.rf_ch4h2o[t] = p.H₂O_share * (0.036 * (sqrt(p.CH4[t]) - sqrt(p.M0)))
+end
 end

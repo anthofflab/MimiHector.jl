@@ -19,27 +19,27 @@
 
     function run_timestep(p, v, d, t)
 
-        if is_first(t)
+    if is_first(t)
             # Set initial lifetime value.
-            v.TOH[t] = p.TOH0
-        else
+        v.TOH[t] = p.TOH0
+    else
             # Methane contribution to OH lifetime.
-            a = p.CCH4 * (-1.0 * log(p.CH4[t-1]) + log(p.M0))
+        a = p.CCH4 * (-1.0 * log(p.CH4[t - 1]) + log(p.M0))
 
             # NOx contribution to OH lifetime.
-            b = p.CNOX * (-1.0 * p.NOX_emissions[t] + p.NOX_emissions[TimestepIndex(1)])
+        b = p.CNOX * (-1.0 * p.NOX_emissions[t] + p.NOX_emissions[TimestepIndex(1)])
 
             # CO contribution to OH lifetime.
-            c = p.CCO * (-1.0 * p.CO_emissions[t] + p.CO_emissions[TimestepIndex(1)])
+        c = p.CCO * (-1.0 * p.CO_emissions[t] + p.CO_emissions[TimestepIndex(1)])
 
             # NMVOC contribution to OH lifetime.
-            d = p.CNMVOC * (-1.0 * p.NMVOC_emissions[t] + p.NMVOC_emissions[TimestepIndex(1)])
+        d = p.CNMVOC * (-1.0 * p.NMVOC_emissions[t] + p.NMVOC_emissions[TimestepIndex(1)])
 
             # Change in tropospheric OH abundance.
-            toh = a + b + c + d
+        toh = a + b + c + d
 
             # Calculate tropospheric lifetime of methane conditional on OH abundance.
-            v.TOH[t] = p.TOH0 * exp(toh)
-        end
+        v.TOH[t] = p.TOH0 * exp(toh)
     end
+end
 end
