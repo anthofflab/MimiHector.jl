@@ -9,12 +9,12 @@ function interact(M, N)
 end
 
 @defcomp rf_ch4 begin
-    N₂O_0     = Parameter()             # Pre-industrial atmospheric nitrous oxide concentration (ppb).
-    CH₄_0     = Parameter()             # Pre-industrial atmospheric methane concentration (ppb).
+    N₂O_0 = Parameter()             # Pre-industrial atmospheric nitrous oxide concentration (ppb).
+    CH₄_0 = Parameter()             # Pre-industrial atmospheric methane concentration (ppb).
     scale_CH₄ = Parameter()             # Scaling factor for uncertainty in methane radiative forcing.
-    CH4       = Parameter(index=[time]) # Atmospheric methane concentration (ppb).
+    CH4 = Parameter(index=[time]) # Atmospheric methane concentration (ppb).
 
-    rf_CH4    = Variable(index=[time])  # Direct forcing from atmospheric methane concentrations (Wm⁻²).
+    rf_CH4 = Variable(index=[time])  # Direct forcing from atmospheric methane concentrations (Wm⁻²).
 
     function run_timestep(p, v, d, t)
 
