@@ -10,15 +10,15 @@ include("components/rf_ch4h2o.jl")
 include("components/rf_ch4.jl")
 include("components/rf_o3.jl")
 
-function get_model(;rcp_scenario::String="RCP85", start_year::Int=1765, end_year::Int=2300)
+function get_model(; rcp_scenario::String="RCP85", start_year::Int=1765, end_year::Int=2300)
 
     # ---------------------------------------------
     # Load and clean up necessary data.
     # ---------------------------------------------
 
     # Load RCP emissions and concentration scenario values (RCP options = "RCP26", "RCP45", "RCP60", and "RCP85").
-    rcp_emissions      = DataFrame(load(joinpath(@__DIR__, "..", "data", "model_data", rcp_scenario*"_EMISSIONS.csv"), skiplines_begin=36))
-    rcp_concentrations = DataFrame(load(joinpath(@__DIR__, "..", "data", "model_data", rcp_scenario*"_CONCENTRATIONS.csv"), skiplines_begin=37))
+    rcp_emissions = DataFrame(load(joinpath(@__DIR__, "..", "data", "model_data", rcp_scenario * "_EMISSIONS.csv"), skiplines_begin=36))
+    rcp_concentrations = DataFrame(load(joinpath(@__DIR__, "..", "data", "model_data", rcp_scenario * "_CONCENTRATIONS.csv"), skiplines_begin=37))
 
     # Set initial CH₄ and N₂O concentrations to RCP 1765 values.
     CH₄_0 = rcp_concentrations[1, :CH4]
